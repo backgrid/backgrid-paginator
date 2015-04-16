@@ -1,4 +1,4 @@
-backgrid-paginator
+backgrid-paginator [fork]
 ==================
 
 [![Build Status](https://travis-ci.org/wyuenho/backgrid-paginator.png?branch=master)](https://travis-ci.org/wyuenho/backgrid-paginator)

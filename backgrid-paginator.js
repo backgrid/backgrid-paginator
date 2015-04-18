@@ -196,12 +196,14 @@
     changePage: function (e) {
       e.preventDefault();
       var $el = this.$el, col = this.collection;
+      var options = (col.extraParams) ? { data: col.extraParams } : {};
+
       if (!$el.hasClass("active") && !$el.hasClass("disabled")) {
-        if (this.isRewind) col.getFirstPage();
-        else if (this.isBack) col.getPreviousPage();
-        else if (this.isForward) col.getNextPage();
-        else if (this.isFastForward) col.getLastPage();
-        else col.getPage(this.pageIndex, {reset: true});
+        if (this.isRewind) col.getFirstPage(options);
+        else if (this.isBack) col.getPreviousPage(options);
+        else if (this.isForward) col.getNextPage(options);
+        else if (this.isFastForward) col.getLastPage(options);
+        else col.getPage(this.pageIndex, _.extend({reset: true}, options));
       }
       return this;
     }

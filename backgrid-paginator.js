@@ -1,9 +1,9 @@
-/*
-  backgrid-paginator
-  http://github.com/wyuenho/backgrid
-
-  Copyright (c) 2013 Jimmy Yuen Ho Wong and contributors
-  Licensed under the MIT @license.
+/**
+ * backgrid-paginator [new]
+ *
+ * @author: Luis Hdez [updates]
+ * @author: Jimmy Yuen Ho Wong [original fork]
+ * @license MIT
 */
 (function (root, factory) {
 
@@ -224,6 +224,9 @@
     className: "backgrid-paginator",
 
     /** @property */
+    holderClassName: "pagination",
+
+    /** @property */
     windowSize: 10,
 
     /**
@@ -282,6 +285,7 @@
 
        @param {Object} options
        @param {Backbone.Collection} options.collection
+       @param {boolean} [options.holderClassName]
        @param {boolean} [options.controls]
        @param {boolean} [options.pageHandle=Backgrid.Extension.PageHandle]
        @param {boolean} [options.goBackFirstOnSort=true]
@@ -291,7 +295,7 @@
       self.controls = _.defaults(options.controls || {}, self.controls,
                                  Paginator.prototype.controls);
 
-      _.extend(self, _.pick(options || {}, "windowSize", "pageHandle",
+      _.extend(self, _.pick(options || {}, "holderClassName", "windowSize", "pageHandle",
                             "slideScale", "goBackFirstOnSort",
                             "renderIndexedPageHandles"));
 
@@ -419,6 +423,7 @@
       var handles = this.handles = this.makeHandles();
 
       var ul = document.createElement("ul");
+      $(ul).addClass(this.holderClassName);
       for (var i = 0; i < handles.length; i++) {
         ul.appendChild(handles[i].render().el);
       }
